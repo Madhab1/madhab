@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Er. Madhab Rijal | Professional Engineer & Researcher</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #2980b9;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://source.unsplash.com/random/1600x900/?university,research') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .profile-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Publications Section */
+        .publication-list {
+            list-style: none;
+        }
+        
+        .publication-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .publication-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pub-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .pub-authors {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .pub-journal {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-list li:before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-img {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Er. Madhab Rijal</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Er. Madhab Rijal</h1>
+            <p>Professional Engineer, Assistant Professor & Researcher</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                    <!-- REPLACE THIS IMAGE WITH YOUR ACTUAL PROFILE PHOTO -->
+                    <img src="madhab.jpg" alt="Madhab Rijal" class="profile-img">
+                </div>
+                <div>
+                    <p>Er. Madhab Rijal is a Professional Engineer, an Assistant Professor at Mid-West University in Nepal, and a PhD candidate majoring in Hydraulic Engineering at Chang'an University, China.</p>
+                    <p>His academic and research focus lies in the fields of hydrology and environmental science. With a strong record of publication, he has successfully authored 6 research papers in reputable SCI-indexed journals.</p>
+                    <p>His work has been featured in top-tier publications, including Science of the Total Environment and the Journal of Hydrology, demonstrating his commitment to high-quality research.</p>
+                    <p>Complementing his research, Mr. Rijal has developed significant teaching expertise and is proficient in a suite of analytical and spatial analysis tools, such as ArcGIS and Origin Pro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" style="background-color: #f1f2f6;">
+        <div class="container">
+            <h2>Selected Publications</h2>
+            <ul class="publication-list">
+                <!-- Publication 1 -->
+                <li class="publication-item">
+                    <div class="pub-title">Global systematic and comprehensive overview of mountainous flood risk under climate change and human activities</div>
+                    <div class="pub-authors">Rijal M., Luo P., Mishra B.K., Zhou M., X.</div>
+                    <div class="pub-journal">Science of The Total Environment, 941, 173672 (2024)</div>
+                    <a href="https://doi.org/10.1016/j.scitotenv.2024.173672" target="_blank">View Publication</a>
+                </li>
+                
+                <!-- Publication 2 -->
+                <li class="publication-item">
+                    <div class="pub-title">SWAT-Based Runoff and Sediment Simulation in a Small Watershed of Nepalese River: A Case Study of Jhimruk Watershed</div>
+                    <div class="pub-authors">Rijal M., Pandit H.P., Mishra B.K.</div>
+                    <div class="pub-journal">International Journal of Science and Technology 13:2, pp 215-235 (2022)</div>
+                    <a href="https://doi.org/10.1504/IJHST.2022.120629" target="_blank">View Publication</a>
+                </li>
+                
+                <!-- Publication 3 -->
+                <li class="publication-item">
+                    <div class="pub-title">Spatial Spillover Effects of Urban Agglomeration on Road Network with Industrial Co-Agglomeration</div>
+                    <div class="pub-authors">Liu, X.; Luo, P.; Rijal, M.; Hu, M.; Chong, K.L.</div>
+                    <div class="pub-journal">Land 2024, 13, 2097</div>
+                    <a href="https://doi.org/10.3390/land13122097" target="_blank">View Publication</a>
+                </li>
+                
+                <!-- Publication 4 -->
+                <li class="publication-item">
+                    <div class="pub-title">Importance of Farmers' Awareness on Ecological Revitalization to Promote Sustainable Development</div>
+                    <div class="pub-authors">Sun, B., Wang, X., Luo, P., Zhao, Y., & Rijal, M.</div>
+                    <div class="pub-journal">Sustainability, 16(22), 10134 (2024)</div>
+                    <a href="https://doi.org/10.3390/su162210134" target="_blank">View Publication</a>
+                </li>
+                
+                <!-- Publication 5 -->
+                <li class="publication-item">
+                    <div class="pub-title">Real-time predictive control assessment of low-water head hydropower station considering power generation and flood discharge</div>
+                    <div class="pub-authors">Zhang Y., Wang X., Feng T., Lian J., Luo P., Rijal M., Wei W.</div>
+                    <div class="pub-journal">Journal of Hydrology, 645, 132204 (2024)</div>
+                    <a href="https://doi.org/10.1016/j.jhydrol.2024.132204" target="_blank">View Publication</a>
+                </li>
+                
+                <!-- Publication 6 -->
+                <li class="publication-item">
+                    <div class="pub-title">Hadrochemical Characteristics, Controlling Factors and Water Quality Evaluation of Groundwater Quality in Kono, Sierra Leone</div>
+                    <div class="pub-authors">Kallon H.D.S., Rijal M.</div>
+                    <div class="pub-journal">Adv Earth & Env Sci; 5(2):1-17 (2024)</div>
+                    <a href="https://doi.org/10.47485/2766-2624.1044" target="_blank">View Publication</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Research Areas</h3>
+                    <ul class="skill-list">
+                        <li>Hydrology</li>
+                        <li>Environmental Science</li>
+                        <li>Hydraulic Engineering</li>
+                        <li>Climate Change Impacts</li>
+                        <li>Water Resources Management</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>ArcGIS</li>
+                        <li>Origin Pro</li>
+                        <li>SWAT Modeling</li>
+                        <li>J2000 Modeling</li>
+                        <li>Spatial Analysis</li>
+                        <li>Data Analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Academic Expertise</h3>
+                    <ul class="skill-list">
+                        <li>Research Publication</li>
+                        <li>Academic Writing</li>
+                        <li>Teaching & Mentoring</li>
+                        <li>Curriculum Development</li>
+                        <li>Peer Review</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f1f2f6;">
+        <div class="container">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <!-- UPDATE THIS WITH YOUR ACTUAL EMAIL -->
+                    <h3>Email</h3>
+                    <p><a href="madhab.rijal@mu.edu.np">madhab.rijal@mu.edu.np</a></p>
+                </div>
+                
+                <div class="contact-item">
+                    <!-- UPDATE THIS WITH YOUR ACTUAL AFFILIATION -->
+                    <h3>Affiliation</h3>
+                    <p>Assistant Professor<br>Mid-West University, Nepal</p>
+                    <p>PhD Candidate<br>Chang'an University, China</p>
+                </div>
+                
+                <div class="contact-item">
+                    <!-- UPDATE THIS WITH YOUR ACTUAL PROFILES -->
+                    <h3>Professional Profiles</h3>
+                    <p><a href="https://scholar.google.com/citations?user=kyJ5PmAAAAAJ&hl=en">Google Scholar</a></p>
+                    <p><a href="https://www.researchgate.net/profile/Madhab-Rijal">ResearchGate</a></p>
+                    <p><a href="https://orcid.org/0000-0002-1745-176X">ORCID</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Er. Madhab Rijal. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
