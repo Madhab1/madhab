@@ -1,452 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Er. Madhab Rijal | Professional Engineer & Researcher</title>
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 60px 0;
-        }
-        
-        h1, h2, h3 {
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-        
-        p {
-            margin-bottom: 15px;
-        }
-        
-        a {
-            color: #3498db;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: #2980b9;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            color: white;
-            font-weight: 500;
-        }
-        
-        .nav-links a:hover {
-            color: #3498db;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9)), url('https://source.unsplash.com/random/1600x900/?university,research') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 120px 0;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .profile-img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Publications Section */
-        .publication-list {
-            list-style: none;
-        }
-        
-        .publication-item {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .publication-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .pub-title {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .pub-authors {
-            font-style: italic;
-            margin-bottom: 5px;
-        }
-        
-        .pub-journal {
-            color: #7f8c8d;
-            margin-bottom: 10px;
-        }
-        
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .skill-category {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .skill-category h3 {
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-        
-        .skill-list {
-            list-style-type: none;
-        }
-        
-        .skill-list li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .skill-list li:before {
-            content: "•";
-            color: #3498db;
-            position: absolute;
-            left: 0;
-        }
-        
-        /* Contact Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .contact-item {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        
-        .contact-item i {
-            font-size: 2rem;
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile-img {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Er. Madhab Rijal | Professional Engineer & Researcher</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #1e293b;
+      background-color: #f8fafc;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #0f172a;
+      border-bottom: 4px solid #2563eb;
+      padding-bottom: 12px;
+      margin-bottom: 40px;
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    a:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    header {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      color: white;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #60a5fa, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #ffffff;
+      border-bottom-color: #3b82f6;
+      text-decoration: none;
+    }
+
+    /* ---------- HERO with BACKGROUND SLIDESHOW ---------- */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+      background-color: #0f172a;
+      overflow: hidden;
+      padding: 40px 0;
+    }
+
+    /* Slideshow images */
+    .hero-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+      will-change: opacity;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* dark overlay for readability */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.70);
+      backdrop-filter: brightness(0.85) saturate(1.1);
+      z-index: 1;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #93c5fd, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto 32px;
+      opacity: 0.95;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.25);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: #e0f2fe;
+    }
+
+    .hero-badge i {
+      margin-right: 8px;
+      color: #60a5fa;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .profile-img-wrapper {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .profile-img-wrapper:hover {
+      transform: scale(1.01);
+    }
+
+    .profile-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      color: #1e293b;
+    }
+
+    .about-text i {
+      color: #2563eb;
+      margin-right: 6px;
+      width: 1.4rem;
+    }
+
+    /* ---------- PUBLICATIONS ---------- */
+    #publications {
+      background: #f1f5f9;
+    }
+
+    .pub-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pub-item {
+      background: white;
+      padding: 24px 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s;
+      border-left: 5px solid #2563eb;
+    }
+    .pub-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px -8px rgba(37, 99, 235, 0.12);
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .pub-authors {
+      font-style: italic;
+      color: #334155;
+      font-size: 0.95rem;
+    }
+    .pub-journal {
+      color: #475569;
+      font-size: 0.9rem;
+      margin: 4px 0 8px;
+    }
+    .pub-link {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .pub-link i {
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 28px 24px;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e9edf2;
+      transition: 0.2s;
+    }
+    .skill-card:hover {
+      border-color: #2563eb;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);
+    }
+
+    .skill-card h3 {
+      color: #0f172a;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-card h3 i {
+      color: #2563eb;
+      font-size: 1.3rem;
+      width: 2rem;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+    .skill-list li {
+      padding: 5px 0 5px 24px;
+      position: relative;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.98rem;
+    }
+    .skill-list li:last-child {
+      border-bottom: none;
+    }
+    .skill-list li::before {
+      content: "▹";
+      color: #2563eb;
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* ---------- CONTACT ---------- */
+    #contact {
+      background: #f1f5f9;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 28px 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e9edf2;
+      transition: 0.2s;
+    }
+    .contact-card:hover {
+      border-color: #2563eb;
+      transform: translateY(-3px);
+    }
+
+    .contact-card i {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 12px;
+    }
+    .contact-card h3 {
+      font-size: 1.1rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .contact-card p,
+    .contact-card a {
+      color: #334155;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 32px 0;
+      text-align: center;
+      border-top: 1px solid #1e293b;
+    }
+    footer .social-links a {
+      color: #94a3b8;
+      margin: 0 10px;
+      font-size: 1.3rem;
+      transition: 0.2s;
+    }
+    footer .social-links a:hover {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    footer p {
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .profile-img-wrapper {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      section {
+        padding: 50px 0;
+      }
+      h2 {
+        font-size: 1.7rem;
+      }
+      .pub-item {
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Er. Madhab Rijal</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Er. Madhab Rijal</h1>
-            <p>Professional Engineer, Assistant Professor & Researcher</p>
-        </div>
-    </section>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Er. Madhab Rijal</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div>
-                    <!-- REPLACE THIS IMAGE WITH YOUR ACTUAL PROFILE PHOTO -->
-                    <img src="madhab.jpg" alt="Madhab Rijal" class="profile-img">
-                </div>
-                <div>
-                    <p>Er. Madhab Rijal is a Professional Engineer, an Assistant Professor at Mid-West University in Nepal, and a PhD candidate majoring in Hydraulic Engineering at Chang'an University, China.</p>
-                    <p>His academic and research focus lies in the fields of hydrology and environmental science. With a strong record of publication, he has successfully authored more than 8 research papers in reputable SCI-indexed journals.</p>
-                    <p>His work has been featured in top-tier publications, including Archives of Computational Methods in Engineering, Science of the Total Environment, and the Journal of Hydrology, demonstrating his commitment to high-quality research.</p>
-                    <p>Complementing his research, Mr. Rijal has developed significant teaching expertise and is proficient in a suite of analytical and spatial analysis tools, such as ArcGIS and Origin Pro.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ===== HERO with Background Slideshow ===== -->
+  <section class="hero" id="home">
+    <!-- Slideshow images (swap in a few seconds) -->
+    <div class="hero-slideshow" id="heroSlideshow">
+      <!-- Replace src with your own professional images -->
+      <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=1600&q=80');"></div>
+    </div>
+    <div class="hero-overlay"></div>
 
-    <!-- Publications Section -->
-    <section id="publications" style="background-color: #f1f2f6;">
-        <div class="container">
-            <h2>Selected Publications</h2>
-            <ul class="publication-list">
-                <!-- Publication 1 -->
-                <li class="publication-item">
-                    <div class="pub-title">Mountainous Flood Resilience: A Comprehensive Systematic Review of Flood Analysis Methods</div>
-                    <div class="pub-authors">Rijal M., Luo P., Mishra B.K., Thakuri S., Zhang Y., and Zhao Y., X.</div>
-                    <div class="pub-journal">Archives of Computational Methods in Engineering, 2025</div>
-                    <a href="https://doi.org/10.1007/s11831-025-10439-w" target="_blank">View Publication</a>
-                </li>
-                
-                <!-- Publication 2 -->
-                <li class="publication-item">
-                    <div class="pub-title">Global systematic and comprehensive overview of mountainous flood risk under climate change and human activities</div>
-                    <div class="pub-authors">Rijal M., Luo P., Mishra B.K., Zhou M., X.</div>
-                    <div class="pub-journal">Science of The Total Environment, 941, 173672 (2024)</div>
-                    <a href="https://doi.org/10.1016/j.scitotenv.2024.173672" target="_blank">View Publication</a>
-                </li>
-                
-                <!-- Publication 2 -->
-                <li class="publication-item">
-                    <div class="pub-title">SWAT-Based Runoff and Sediment Simulation in a Small Watershed of Nepalese River: A Case Study of Jhimruk Watershed</div>
-                    <div class="pub-authors">Rijal M., Pandit H.P., Mishra B.K.</div>
-                    <div class="pub-journal">International Journal of Science and Technology 13:2, pp 215-235 (2022)</div>
-                    <a href="https://doi.org/10.1504/IJHST.2022.120629" target="_blank">View Publication</a>
-                </li>
-                
-                <!-- Publication 3 -->
-                <li class="publication-item">
-                    <div class="pub-title">Spatial Spillover Effects of Urban Agglomeration on Road Network with Industrial Co-Agglomeration</div>
-                    <div class="pub-authors">Liu, X.; Luo, P.; Rijal, M.; Hu, M.; Chong, K.L.</div>
-                    <div class="pub-journal">Land 2024, 13, 2097</div>
-                    <a href="https://doi.org/10.3390/land13122097" target="_blank">View Publication</a>
-                </li>
+    <div class="container">
+      <h1>Er. <span>Madhab Rijal</span></h1>
+      <p>Professional Engineer · Assistant Professor · PhD Candidate</p>
+      <div class="hero-badge">
+        <i class="fas fa-water"></i> Hydrology · Climate Extremes · AI/ML
+      </div>
+    </div>
+  </section>
 
-                <!-- Publication 5 -->
-                <li class="publication-item">
-                    <div class="pub-title">Coordinating Socio-Economic Development and Ecological Protection in the Yellow River Basin: Pathways to New Quality Productivity</div>
-                    <div class="pub-authors">Zhao Y., Luo P., Zhang J., Yan p., Rijal M., Yang Z., Chen J., Elbeltagi A.</div>
-                    <div class="pub-journal">Environmental and Sustainability Indicators, p. 100987, 2025</div>
-                    <a href="https://doi.org/10.1016/j.indic.2025.100987" target="_blank">View Publication</a>
-                </li>
-                
-                <!-- Publication 6 -->
-                <li class="publication-item">
-                    <div class="pub-title">Importance of Farmers' Awareness on Ecological Revitalization to Promote Sustainable Development</div>
-                    <div class="pub-authors">Sun, B., Wang, X., Luo, P., Zhao, Y., & Rijal, M.</div>
-                    <div class="pub-journal">Sustainability, 16(22), 10134 (2024)</div>
-                    <a href="https://doi.org/10.3390/su162210134" target="_blank">View Publication</a>
-                </li>
-                
-                <!-- Publication 7 -->
-                <li class="publication-item">
-                    <div class="pub-title">Real-time predictive control assessment of low-water head hydropower station considering power generation and flood discharge</div>
-                    <div class="pub-authors">Zhang Y., Wang X., Feng T., Lian J., Luo P., Rijal M., Wei W.</div>
-                    <div class="pub-journal">Journal of Hydrology, 645, 132204 (2024)</div>
-                    <a href="https://doi.org/10.1016/j.jhydrol.2024.132204" target="_blank">View Publication</a>
-                </li>
-                
-                <!-- Publication 8 -->
-                <li class="publication-item">
-                    <div class="pub-title">Hadrochemical Characteristics, Controlling Factors and Water Quality Evaluation of Groundwater Quality in Kono, Sierra Leone</div>
-                    <div class="pub-authors">Kallon H.D.S., Rijal M.</div>
-                    <div class="pub-journal">Adv Earth & Env Sci; 5(2):1-17 (2024)</div>
-                    <a href="https://doi.org/10.47485/2766-2624.1044" target="_blank">View Publication</a>
-                </li>
-                
-            </ul>
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="profile-img-wrapper">
+          <!-- Replace with your actual profile photo (madhab.jpg) -->
+          <img src="madhab.jpg" alt="Madhab Rijal profile photo" />
         </div>
-    </section>
+        <div class="about-text">
+          <p><i class="fas fa-graduation-cap"></i> Er. Madhab Rijal is a <strong>Professional Engineer</strong>, Assistant Professor at Mid-West University (Nepal), and a PhD candidate in Hydraulic Engineering at Chang'an University, China.</p>
+          <p><i class="fas fa-microscope"></i> His research focuses on <strong>hydrology, environmental science, and climate extremes</strong>. He has authored 8+ peer-reviewed papers in SCI-indexed journals including <em>Archives of Computational Methods in Engineering</em>, <em>Science of the Total Environment</em>, and <em>Journal of Hydrology</em>.</p>
+          <p><i class="fas fa-tools"></i> Proficient in <strong>ArcGIS, Origin Pro, SWAT, J2000, Python, R</strong>, and remote sensing, he combines field expertise with advanced computation to address water security challenges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Research Areas</h3>
-                    <ul class="skill-list">
-                        <li>Hydrology</li>
-                        <li>Environmental Science</li>
-                        <li>Hydraulic Engineering</li>
-                        <li>Climate Change Impacts</li>
-                        <li>Water Resources Management</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    <ul class="skill-list">
-                        <li>ArcGIS</li>
-                        <li>Origin Pro</li>
-                        <li>SWAT Modeling</li>
-                        <li>J2000 Modeling</li>
-                        <li>Spatial Analysis</li>
-                        <li>Data Analysis</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Academic Expertise</h3>
-                    <ul class="skill-list">
-                        <li>Research Publication</li>
-                        <li>Academic Writing</li>
-                        <li>Teaching & Mentoring</li>
-                        <li>Curriculum Development</li>
-                        <li>Peer Review</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ===== PUBLICATIONS ===== -->
+  <section id="publications">
+    <div class="container">
+      <h2>Selected Publications</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <div class="pub-title">Mountainous Flood Resilience: A Comprehensive Systematic Review of Flood Analysis Methods</div>
+          <div class="pub-authors">Rijal M., Luo P., Mishra B.K., Thakuri S., Zhang Y., Zhao Y.</div>
+          <div class="pub-journal">Archives of Computational Methods in Engineering, 2025 (IF: 12.1)</div>
+          <a class="pub-link" href="https://doi.org/10.1007/s11831-025-10439-w" target="_blank">View Publication <i class="fas fa-arrow-right"></i></a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">Global systematic and comprehensive overview of mountainous flood risk under climate change and human activities</div>
+          <div class="pub-authors">Rijal M., Luo P., Mishra B.K., Zhou M., Wang X.</div>
+          <div class="pub-journal">Science of The Total Environment, 941, 173672 (2024) (IF: 8.2)</div>
+          <a class="pub-link" href="https://doi.org/10.1016/j.scitotenv.2024.173672" target="_blank">View Publication <i class="fas fa-arrow-right"></i></a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">SWAT-Based Runoff and Sediment Simulation in a Small Watershed of Nepalese River: A Case Study of Jhimruk Watershed</div>
+          <div class="pub-authors">Rijal M., Pandit H.P., Mishra B.K.</div>
+          <div class="pub-journal">International Journal of Hydrology Science and Technology 13:2, pp 215-235 (2022)</div>
+          <a class="pub-link" href="https://doi.org/10.1504/IJHST.2022.120629" target="_blank">View Publication <i class="fas fa-arrow-right"></i></a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">Spatial Spillover Effects of Urban Agglomeration on Road Network with Industrial Co-Agglomeration</div>
+          <div class="pub-authors">Liu X., Luo P., Rijal M., Hu M., Chong K.L.</div>
+          <div class="pub-journal">Land 2024, 13, 2097 (IF: 3.2)</div>
+          <a class="pub-link" href="https://doi.org/10.3390/land13122097" target="_blank">View Publication <i class="fas fa-arrow-right"></i></a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">Coordinating Socio-Economic Development and Ecological Protection in the Yellow River Basin: Pathways to New Quality Productivity</div>
+          <div class="pub-authors">Zhao Y., Luo P., Zhang J., Yan P., Rijal M., Yang Z., Chen J., Elbeltagi A.</div>
+          <div class="pub-journal">Environmental and Sustainability Indicators, 100987 (2025) (IF: 5.6)</div>
+          <a class="pub-link" href="https://doi.org/10.1016/j.indic.2025.100987" target="_blank">View Publication <i class="fas fa-arrow-right"></i></a>
+        </li>
+        <li class="pub-item">
+          <div class="pub-title">Real-time predictive control assessment of low-water head hydropower station considering power generation and flood discharge</div>
+          <div class="pub-authors">Zhang Y., Wang X., Feng T., Lian J., Luo P., Rijal M., Wei W.</div>
+          <div class="pub-journal">Journal of Hydrology, 645, 132204 (2024) (IF: 6.3)</div>
+          <a class="pub-link" href="https://doi.org/10.1016/j.jhydrol.2024.132204" target="_blank">View Publication <i class="fas fa-arrow-right"></i></a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" style="background-color: #f1f2f6;">
-        <div class="container">
-            <h2>Contact Information</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <!-- UPDATE THIS WITH YOUR ACTUAL EMAIL -->
-                    <h3>Email</h3>
-                    <p><a href="mailto:madhab.rijal@mu.edu.np">contact me</a></p>
-                </div>
-                
-                <div class="contact-item">
-                    <!-- UPDATE THIS WITH YOUR ACTUAL AFFILIATION -->
-                    <h3>Affiliation</h3>
-                    <p>Assistant Professor<br>Mid-West University, Nepal</p>
-                    <p>PhD Candidate<br>Chang'an University, China</p>
-                </div>
-                
-                <div class="contact-item">
-                    <!-- UPDATE THIS WITH YOUR ACTUAL PROFILES -->
-                    <h3>Professional Profiles</h3>
-                    <p><a href="https://scholar.google.com/citations?user=kyJ5PmAAAAAJ&hl=en">Google Scholar</a></p>
-                    <p><a href="https://www.researchgate.net/profile/Madhab-Rijal">ResearchGate</a></p>
-                    <p><a href="https://orcid.org/0000-0002-1745-176X">ORCID</a></p>
-                </div>
-            </div>
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3><i class="fas fa-droplet"></i> Research Areas</h3>
+          <ul class="skill-list">
+            <li>Hydrology & Water Resources</li>
+            <li>Floods, Droughts & Extremes</li>
+            <li>Hydrometeorology & Climate</li>
+            <li>Subseasonal-to-Seasonal Prediction</li>
+            <li>AI/ML in Environmental Systems</li>
+          </ul>
         </div>
-    </section>
+        <div class="skill-card">
+          <h3><i class="fas fa-code"></i> Technical Tools</h3>
+          <ul class="skill-list">
+            <li>ArcGIS, QGIS, Google Earth Engine</li>
+            <li>J2000, SWAT, HEC-HMS, RRI</li>
+            <li>Python, R, MATLAB, Java</li>
+            <li>Origin Pro, AutoCAD</li>
+            <li>Climate Scenario Analysis</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fas fa-chalkboard-teacher"></i> Academic & Teaching</h3>
+          <ul class="skill-list">
+            <li>Research Publication & Peer Review</li>
+            <li>Academic Writing & Mentoring</li>
+            <li>Curriculum Development</li>
+            <li>Scientific Writing & GIS Training</li>
+            <li>Hydropower & Water Resources</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Er. Madhab Rijal. All Rights Reserved.</p>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p><a href="mailto:madhab.rijal@mu.edu.np">madhab.rijal@mu.edu.np</a></p>
         </div>
-    </footer>
+        <div class="contact-card">
+          <i class="fas fa-university"></i>
+          <h3>Affiliation</h3>
+          <p>Assistant Professor, Mid-West University, Nepal<br>PhD Candidate, Chang'an University, China</p>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-user-graduate"></i>
+          <h3>Profiles</h3>
+          <p><a href="https://scholar.google.com/citations?user=kyJ5PmAAAAAJ&hl=en" target="_blank">Google Scholar</a><br>
+          <a href="https://www.researchgate.net/profile/Madhab-Rijal" target="_blank">ResearchGate</a><br>
+          <a href="https://orcid.org/0000-0002-1745-176X" target="_blank">ORCID</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://scholar.google.com/citations?user=kyJ5PmAAAAAJ&hl=en" target="_blank"><i class="fab fa-google-scholar"></i></a>
+        <a href="https://www.researchgate.net/profile/Madhab-Rijal" target="_blank"><i class="fab fa-researchgate"></i></a>
+        <a href="https://orcid.org/0000-0002-1745-176X" target="_blank"><i class="fab fa-orcid"></i></a>
+        <a href="mailto:madhab.rijal@mu.edu.np"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>&copy; 2026 Er. Madhab Rijal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SLIDESHOW SCRIPT (swap every 5 seconds) ===== -->
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      // Ensure first slide is active, others hidden
+      slides.forEach((slide, idx) => {
+        if (idx === 0) slide.classList.add('active');
+        else slide.classList.remove('active');
+      });
+
+      function nextSlide() {
+        // remove active from current
+        slides[currentIndex].classList.remove('active');
+        // increment index
+        currentIndex = (currentIndex + 1) % totalSlides;
+        // add active to new current
+        slides[currentIndex].classList.add('active');
+      }
+
+      // Change slide every 5 seconds (5000 ms)
+      setInterval(nextSlide, 5000);
+    })();
+  </script>
+
 </body>
-
 </html>
-
