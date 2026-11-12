@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Image to PDF - Free Tool | Er. Madhab Rijal</title>
-<meta name="description" content="Convert multiple images to one PDF for free. No upload, 100% private.">
+<meta name="description" content="Convert multiple images to one PDF for free. No upload, 100% private and fast.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
@@ -50,29 +50,29 @@ footer{background:#0f172a;color:#94a3b8;text-align:center;padding:24px 0;font-si
 <div class="container">
 <div class="hero">
 <h1>🖼️ Image to PDF</h1>
-<p>धेरै फोटोहरूलाई क्रम मिलाएर एउटै PDF बनाउनुहोस्। फाइल सर्भरमा जाँदैन, १००% सुरक्षित र फ्री।</p>
+<p>Convert multiple images into one PDF. Free, fast and 100% private. Your files never leave your browser.</p>
 </div>
 <div class="card">
 <div class="drop" id="dropZone">
 <i class="fas fa-cloud-arrow-up"></i>
-<b>फोटोहरू यहाँ छान्नुहोस् वा तान्नुहोस्</b>
-<span>JPG, PNG, WEBP सबै चल्छ • धेरै वटा एकै पटक मिल्छ</span>
+<b>Select images or drag & drop here</b>
+<span>JPG, PNG, WEBP supported • Select multiple images at once</span>
 <input type="file" id="fileInput" accept="image/*" multiple>
 </div>
 <div class="preview" id="preview"></div>
 <div class="controls">
-<div><label>Page Size</label><select id="pageSize"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Image जत्रै (Fit)</option></select></div>
-<div><label>Orientation</label><select id="orientation"><option value="portrait">Portrait (ठाडो)</option><option value="landscape">Landscape (तेर्सो)</option></select></div>
+<div><label>Page Size</label><select id="pageSize"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Fit to Image (Same as Image)</option></select></div>
+<div><label>Orientation</label><select id="orientation"><option value="portrait">Portrait (Vertical)</option><option value="landscape">Landscape (Horizontal)</option></select></div>
 </div>
 <div class="controls">
-<div><label>PDF को नाम</label><input type="text" id="pdfName" value="my-images" placeholder="my-images"></div>
-<div><label>Image Quality</label><select id="quality"><option value="0.92">High (राम्रो)</option><option value="0.75">Medium</option><option value="0.55">Low (सानो फाइल)</option></select></div>
+<div><label>PDF File Name</label><input type="text" id="pdfName" value="my-images" placeholder="my-images"></div>
+<div><label>Image Quality</label><select id="quality"><option value="0.92">High (Best Quality)</option><option value="0.75">Medium</option><option value="0.55">Low (Small File)</option></select></div>
 </div>
 <button class="btn btn-blue" id="convertBtn" disabled>Convert to PDF →</button>
-<button class="btn btn-green" id="downloadBtn" style="display:none">⬇️ PDF Download गर्नुहोस्</button>
-<p class="note" id="status">पहिला कम्तीमा १ वटा फोटो छान्नुहोस्</p>
+<button class="btn btn-green" id="downloadBtn" style="display:none">⬇️ Download PDF</button>
+<p class="note" id="status">Please select at least 1 image first</p>
 </div>
-<div class="back"><a href="/pdf-to-image/">PDF to Image Tool पनि हेर्नुहोस् →</a></div>
+<div class="back"><a href="/pdf-to-image/">Also try PDF to Image Tool →</a></div>
 </div>
 <footer>© 2026 Er. Madhab Rijal • Free Tools • No file is uploaded to server</footer>
 <script>
@@ -109,13 +109,13 @@ function render(){
     preview.appendChild(div);
   });
   convertBtn.disabled = images.length===0;
-  status.textContent = images.length===0 ? 'पहिला कम्तीमा १ वटा फोटो छान्नुहोस्' : images.length + ' वटा फोटो तयार छ। क्रम तल-माथि गर्नको लागि हटाएर फेरि हाल्नुहोस्।';
+  status.textContent = images.length===0 ? 'Please select at least 1 image first' : images.length + ' image(s) ready. To reorder, remove and add again.';
   downloadBtn.style.display='none';
 }
 window.removeImg = function(idx){ images.splice(idx,1); render(); };
 convertBtn.addEventListener('click', async ()=>{
   if(images.length===0) return;
-  convertBtn.textContent='बनाउँदै छ... कृपया पर्खिनुहोस्';
+  convertBtn.textContent='Creating PDF... Please wait';
   convertBtn.disabled=true;
   try{
     const { jsPDF } = window.jspdf;
@@ -149,8 +149,8 @@ convertBtn.addEventListener('click', async ()=>{
     }
     lastPdfBlob = pdf.output('blob');
     downloadBtn.style.display='block';
-    status.textContent='✅ PDF तयार भयो! तल Download थिच्नुहोस्।';
-  }catch(err){ status.textContent='❌ समस्या आयो: '+err.message; }
+    status.textContent='✅ PDF is ready! Click Download below.';
+  }catch(err){ status.textContent='❌ Error: '+err.message; }
   convertBtn.textContent='Convert to PDF →';
   convertBtn.disabled=false;
 });
