@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Image & Image to PDF - Free Converter</title>
+<meta name="description" content="Convert PDF to Image and Images to PDF for free. Works in browser, no upload.">
+<style>
+*{box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{margin:0;background:#f6f7fb;color:#111}
+.topbar{display:flex;justify-content:space-between;align-items:center;max-width:850px;margin:0 auto;padding:14px 16px}
+.logo{font-weight:800;font-size:18px}
+.lang button{padding:8px 14px;border:1px solid #ddd;background:#fff;border-radius:20px;cursor:pointer;font-weight:600;margin-left:6px}
+.lang button.active{background:#111827;color:#fff;border-color:#111827}
+.header{background:#111827;color:#fff;padding:28px 16px;text-align:center}
+.header h1{margin:0;font-size:28px}
+.header p{opacity:.85;margin:8px 0 0}
+.box{max-width:850px;margin:-18px auto 30px;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:22px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{flex:1;padding:13px;border:1px solid #e5e7eb;background:#f9fafb;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
+.tabs button.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
+.upload{border:2px dashed #6366f1;border-radius:14px;padding:26px;text-align:center;background:#eef2ff;cursor:pointer}
+.upload input{display:none}
+.upload b{font-size:18px;color:#4338ca}
+.btn{width:100%;padding:14px;border:0;border-radius:10px;background:#4f46e5;color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:14px}
+.btn:disabled{opacity:.5}
+.btn.green{background:#059669}
+.row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.row label{flex:1;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:10px}
+.row select,.row input{width:100%;padding:8px;margin-top:6px;border:1px solid #ddd;border-radius:8px}
+#preview{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.card{border:1px solid #e5e7eb;border-radius:12px;padding:10px;text-align:center;position:relative}
+.card img{width:100%;border-radius:8px;background:#f3f4f6}
+.card a{display:block;margin-top:8px;background:#111827;color:#fff;padding:9px;border-radius:8px;text-decoration:none;font-weight:600}
+.img-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.img-item{display:flex;gap:10px;align-items:center;border:1px solid #e5e7eb;border-radius:12px;padding:10px;background:#fff}
+.img-item img{width:70px;height:70px;object-fit:cover;border-radius:8px}
+.img-item .info{flex:1;text-align:left}
+.img-item .info b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+.img-item .info span{font-size:12px;color:#6b7280}
+.ctrls{display:flex;gap:6px}
+.ctrls button{width:32px;height:32px;border:1px solid #ddd;background:#f9fafb;border-radius:8px;cursor:pointer;font-size:16px}
+.ctrls button.del{background:#fee2e2;border-color:#fecaca}
+.note{font-size:13px;color:#6b7280;text-align:center;margin-top:12px;line-height:1.6}
+.footer{text-align:center;color:#6b7280;font-size:13px;padding:0 0 30px}
+.hidden{display:none}
+@media(max-width:600px){#preview{grid-template-columns:1fr}.header h1{font-size:22px}.row label{flex-basis:100%}}
+</style>
+</head>
+<body>
+<div class="topbar">
+<div class="logo">Madhab Rijal</div>
+<div class="lang">
+<button id="btn-en" class="active" onclick="setLang('en')">English</button>
+<button id="btn-ne" onclick="setLang('ne')">नेपाली</button>
+</div>
+</div>
+<div class="header">
+<h1 data-en="PDF to Image & Image to PDF" data-ne="PDF बाट Image र Image बाट PDF">PDF to Image & Image to PDF</h1>
+<p data-en="100% Free • Fast • Secure • File never leaves your device" data-ne="१००% फ्री • छिटो • सुरक्षित • फाइल सर्भरमा जाँदैन">100% Free • Fast • Secure</p>
+</div>
+<div class="box">
+<div class="tabs">
+<button id="tabPdfToImg" class="active" onclick="switchTab('pdf2img')">🖼️ <span data-en="PDF to Image" data-ne="PDF बाट Image">PDF to Image</span></button>
+<button id="tabImgToPdf" onclick="switchTab('img2pdf')">📄 <span data-en="Image to PDF" data-ne="Image बाट PDF">Image to PDF</span></button>
+</div>
+
+<!-- PDF TO IMAGE -->
+<div id="sectionPdf2Img">
+<div class="upload" id="dropPdf">
+<b id="pdfTitle" data-en="📄 Choose PDF File" data-ne="📄 PDF फाइल छान्नुहोस्">📄 Choose PDF File</b>
+<p style="margin:8px 0 0;color:#555" data-en="Click here or drag & drop file" data-ne="यहाँ थिच्नुहोस् वा फाइल तानेर ल्याउनुहोस्">Click here or drag & drop file</p>
+<input type="file" id="pdfFile" accept="application/pdf">
+</div>
+<div class="row">
+<label><span data-en="Image Type" data-ne="Image को प्रकार">Image Type</span>
+<select id="format"><option value="image/png">PNG - Best Quality</option><option value="image/jpeg">JPG - Small Size</option></select></label>
+<label><span data-en="Quality" data-ne="क्वालिटी">Quality</span>
+<select id="scale"><option value="2">High - For Print</option><option value="1.5" selected>Medium - Normal</option><option value="1">Low - Fast</option></select></label>
+</div>
+<button class="btn" id="convertPdfBtn" disabled data-en="Convert to Image" data-ne="Image बनाउनुहोस्">Convert to Image</button>
+<p id="statusPdf" style="text-align:center;color:#4f46e5;font-weight:600"></p>
+<div id="preview"></div>
+</div>
+
+<!-- IMAGE TO PDF -->
+<div id="sectionImg2Pdf" class="hidden">
+<div class="upload" id="dropImg">
+<b data-en="🖼️ Choose Images (Many)" data-ne="🖼️ चित्र/फोटोहरू छान्नुहोस् (एक वा धेरै वटा)">🖼️ Choose Images (Many)</b>
+<p style="margin:8px 0 0;color:#555" data-en="Click here to select many images at once" data-ne="एकै पटक धेरै फोटो छान्न यहाँ थिच्नुहोस्">Click here to select many images at once</p>
+<input type="file" id="imgFiles" accept="image/*" multiple>
+</div>
+
+<div class="row">
+<label><span data-en="Page Direction" data-ne="पेजको दिशा">Page Direction</span>
+<select id="orientation">
+<option value="portrait" data-en="Portrait - ठाडो" data-ne="Portrait - ठाडो">Portrait - Vertical</option>
+<option value="landscape" data-en="Landscape - तेर्सो" data-ne="Landscape - तेर्सो">Landscape - Horizontal</option>
+</select></label>
+<label><span data-en="Page Size" data-ne="पेजको साइज">Page Size</span>
+<select id="pageSize">
+<option value="a4">A4 - Standard</option>
+<option value="letter">Letter - US</option>
+<option value="fit">Fit to Image</option>
+</select></label>
+<label><span data-en="PDF File Name" data-ne="PDF फाइलको नाम">PDF File Name</span>
+<input type="text" id="pdfName" value="my-images" placeholder="my-images">
+</label>
+</div>
+
+<p id="imgCount" style="text-align:center;font-weight:600;margin-top:14px" data-en="No images selected yet" data-ne="अहिलेसम्म कुनै Image छानिएको छैन">No images selected yet</p>
+<div id="imgList" class="img-list"></div>
+<button class="btn green" id="makePdfBtn" disabled data-en="Create PDF Now" data-ne="अहिले PDF बनाउनुहोस्">Create PDF Now</button>
+<p id="statusImg" style="text-align:center;color:#059669;font-weight:600"></p>
+<p class="note" data-en="Tip: Use ↑ ↓ buttons to change order. First image will be Page 1." data-ne="सुझाव: क्रम बदल्न ↑ ↓ बटन प्रयोग गर्नुहोस्। पहिलो Image नै पेज १ हुन्छ।">Tip: Use ↑ ↓ buttons to change order.</p>
+</div>
+
+<p class="note" data-en="Your files are converted inside your own browser. We never upload, store or see your files." data-ne="हजुरको फाइल हजुरको आफ्नै ब्राउजरमै बन्छ। हामीले हजुरको फाइल कहिल्यै सर्भरमा राख्दैनौँ।">Your files are converted inside your own browser.</p>
+</div>
+<p class="footer">© Madhab Rijal • madhabrijal.com.np</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+let currentLang='en';
+function setLang(lang){
+  currentLang=lang; localStorage.setItem('site-lang',lang);
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.getElementById('btn-ne').classList.toggle('active',lang==='ne');
+  document.querySelectorAll('[data-en]').forEach(el=>{ el.textContent = el.getAttribute('data-'+lang); });
+}
+(function(){ const saved=localStorage.getItem('site-lang'); if(saved) setLang(saved); else if((navigator.language||'').toLowerCase().startsWith('ne')) setLang('ne'); else setLang('en'); })();
+function switchTab(tab){
+  document.getElementById('tabPdfToImg').classList.toggle('active',tab==='pdf2img');
+  document.getElementById('tabImgToPdf').classList.toggle('active',tab==='img2pdf');
+  document.getElementById('sectionPdf2Img').classList.toggle('hidden',tab!=='pdf2img');
+  document.getElementById('sectionImg2Pdf').classList.toggle('hidden',tab!=='img2pdf');
+}
+
+// --- PDF TO IMAGE ---
+const pdfFile=document.getElementById('pdfFile');
+const dropPdf=document.getElementById('dropPdf');
+let selectedPdf=null;
+dropPdf.addEventListener('click',()=>pdfFile.click());
+pdfFile.addEventListener('change',()=>{selectedPdf=pdfFile.files[0]; if(selectedPdf){document.getElementById('pdfTitle').textContent='✅ '+selectedPdf.name; document.getElementById('convertPdfBtn').disabled=false;}});
+document.getElementById('convertPdfBtn').addEventListener('click', async()=>{
+  if(!selectedPdf) return; const preview=document.getElementById('preview'); preview.innerHTML=''; const status=document.getElementById('statusPdf'); status.textContent=currentLang==='ne'?'कृपया पर्खनुहोस्... Image बन्दैछ...':'Please wait... Converting...';
+  try{
+    const buf=await selectedPdf.arrayBuffer();
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    const format=document.getElementById('format').value; const scale=parseFloat(document.getElementById('scale').value); const ext=format==='image/png'?'png':'jpg';
+    for(let i=1;i<=pdf.numPages;i++){
+      const page=await pdf.getPage(i); const viewport=page.getViewport({scale});
+      const canvas=document.createElement('canvas'); canvas.width=viewport.width; canvas.height=viewport.height;
+      const ctx=canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      await page.render({canvasContext:ctx,viewport}).promise;
+      const url=canvas.toDataURL(format,0.92);
+      const card=document.createElement('div'); card.className='card';
+      card.innerHTML=`<img src="${url}"><p>${currentLang==='ne'?`पेज ${i}`:`Page ${i}`}</p><a href="${url}" download="page-${i}.${ext}">${currentLang==='ne'?`⬇️ पेज ${i} डाउनलोड`:`⬇️ Download Page ${i}`}</a>`;
+      preview.appendChild(card);
+    }
+    status.textContent=currentLang==='ne'?`सफल भयो! ${pdf.numPages} वटा Image बन्यो।`:`Success! ${pdf.numPages} Images Created.`;
+  }catch(e){ status.textContent=currentLang==='ne'?'माफ गर्नुहोस्, यो PDF खोल्न सकिएन।':'Sorry, could not open this PDF.'; }
+});
+
+// --- IMAGE TO PDF ---
+let images=[]; // {id, name, dataUrl}
+const imgInput=document.getElementById('imgFiles');
+const dropImg=document.getElementById('dropImg');
+dropImg.addEventListener('click',()=>imgInput.click());
+imgInput.addEventListener('change', async()=>{
+  const files=Array.from(imgInput.files);
+  for(const f of files){
+    const dataUrl=await readFile(f);
+    images.push({id:Date.now()+Math.random(), name:f.name, dataUrl});
+  }
+  renderImgList(); imgInput.value='';
+});
+function readFile(f){ return new Promise(res=>{ const r=new FileReader(); r.onload=e=>res(e.target.result); r.readAsDataURL(f); }); }
+function renderImgList(){
+  const list=document.getElementById('imgList'); list.innerHTML='';
+  const countEl=document.getElementById('imgCount');
+  countEl.textContent = currentLang==='ne' ? `${images.length} वटा Image छानियो` : `${images.length} Images Selected`;
+  document.getElementById('makePdfBtn').disabled = images.length===0;
+  images.forEach((img, idx)=>{
+    const div=document.createElement('div'); div.className='img-item';
+    div.innerHTML=`<img src="${img.dataUrl}"><div class="info"><b>${idx+1}. ${img.name}</b><span>${currentLang==='ne'?'पेज '+(idx+1):'Page '+(idx+1)}</span></div>
+    <div class="ctrls">
+      <button onclick="moveImg(${idx},-1)" title="Up">↑</button>
+      <button onclick="moveImg(${idx},1)" title="Down">↓</button>
+      <button class="del" onclick="removeImg(${idx})" title="Delete">✕</button>
+    </div>`;
+    list.appendChild(div);
+  });
+}
+function moveImg(idx, dir){
+  const newIdx=idx+dir; if(newIdx<0||newIdx>=images.length) return;
+  const tmp=images[idx]; images[idx]=images[newIdx]; images[newIdx]=tmp; renderImgList();
+}
+function removeImg(idx){ images.splice(idx,1); renderImgList(); }
+function getImageSize(dataUrl){ return new Promise(res=>{ const im=new Image(); im.onload=()=>res({w:im.naturalWidth,h:im.naturalHeight}); im.src=dataUrl; }); }
+
+document.getElementById('makePdfBtn').addEventListener('click', async()=>{
+  if(images.length===0) return;
+  const status=document.getElementById('statusImg'); status.textContent=currentLang==='ne'?'कृपया पर्खनुहोस्... PDF बन्दैछ...':'Please wait... Creating PDF...';
+  try{
+    const { jsPDF } = window.jspdf;
+    const orientation=document.getElementById('orientation').value;
+    const pageSize=document.getElementById('pageSize').value;
+    const fileName=(document.getElementById('pdfName').value||'my-images').trim();
+    let pdf=null;
+    for(let i=0;i<images.length;i++){
+      const img=images[i];
+      const size=await getImageSize(img.dataUrl);
+      let format='a4'; let orient=orientation;
+      if(pageSize==='fit'){
+        // image को आकार अनुसार पेज
+        const isLandscape = size.w > size.h;
+        orient = isLandscape ? 'landscape' : 'portrait';
+        pdf = pdf || new jsPDF({orientation:orient, unit:'px', format:[size.w, size.h], hotfixes:['px_scaling']});
+        if(i>0) pdf.addPage([size.w, size.h], orient);
+        pdf.addImage(img.dataUrl, 'JPEG', 0, 0, size.w, size.h);
+      } else {
+        if(!pdf) pdf=new jsPDF({orientation:orient, unit:'mm', format:pageSize});
+        else pdf.addPage(pageSize, orient);
+        const pw=pdf.internal.pageSize.getWidth(); const ph=pdf.internal.pageSize.getHeight();
+        // image लाई पेजभित्र अटाउने गरी मिलाउने
+        const ratio=Math.min(pw/size.w, ph/size.h);
+        const w=size.w*ratio; const h=size.h*ratio;
+        const x=(pw-w)/2; const y=(ph-h)/2;
+        // सेतो background
+        pdf.setFillColor(255,255,255); pdf.rect(0,0,pw,ph,'F');
+        const type = img.dataUrl.startsWith('data:image/png') ? 'PNG' : 'JPEG';
+        pdf.addImage(img.dataUrl, type, x, y, w, h);
+      }
+    }
+    pdf.save(fileName + '.pdf');
+    status.textContent=currentLang==='ne'?`सफल भयो! ${images.length} वटा Image बाट PDF बन्यो।`:`Success! PDF created from ${images.length} images.`;
+  }catch(e){ status.textContent=currentLang==='ne'?'माफ गर्नुहोस्, PDF बनाउन सकिएन। अर्को Image प्रयास गर्नुहोस्।':'Sorry, could not create PDF.'; }
+});
+</script>
+</body>
+</html>
