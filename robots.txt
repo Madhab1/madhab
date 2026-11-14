@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing - Yahoo र DuckDuckGo लाई पनि यहीले छोप्छ
+User-agent: Bingbot
+Allow: /
+
+# Baidu - चीनको लागि
+User-agent: Baiduspider
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+Sitemap: https://madhabrijal.com.np/sitemap.xml
